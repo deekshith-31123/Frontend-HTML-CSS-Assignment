@@ -1,0 +1,18 @@
+// The global variable
+const s = [23, 65, 98, 5];
+
+Array.prototype.myFilter = function(callback) {
+  // Corrected implementation
+  const newArray = [];
+  for (let i = 0; i < this.length; i++) {
+    // Pass the current element, index, and the array itself to the callback
+    if (callback(this[i], i, this)) {
+      newArray.push(this[i]);
+    }
+  }
+  return newArray;
+};
+
+const new_s = s.myFilter(function(item) {
+  return item % 2 === 1;
+});

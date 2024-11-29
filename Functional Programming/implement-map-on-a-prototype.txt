@@ -1,0 +1,17 @@
+// The global variable
+const s = [23, 65, 98, 5];
+
+Array.prototype.myMap = function(callback) {
+  const newArray = [];
+  // Correct implementation
+  for (let i = 0; i < this.length; i++) {
+    // Pass the current element, index, and the entire array to the callback
+    const newValue = callback(this[i], i, this);
+    newArray.push(newValue);
+  }
+  return newArray;
+};
+
+const new_s = s.myMap(function(item) {
+  return item * 2;
+});
